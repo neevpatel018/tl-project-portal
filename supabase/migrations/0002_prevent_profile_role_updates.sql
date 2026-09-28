@@ -1,0 +1,1 @@
+drop policy if exists "Staff can update profiles" on public.profiles;

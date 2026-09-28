@@ -6,10 +6,10 @@ import { allowRequest } from "@/lib/rate-limit";
 const schema=z.object({
  title:z.string().trim().min(3).max(160), lead_name:z.string().trim().min(2).max(120),
  lead_email:z.string().trim().email().max(254), organization:z.string().trim().min(2).max(160),
- team_members:z.string().max(5000).optional().default(""), start_date:z.string().optional().default(""),
- end_date:z.string().optional().default(""), summary:z.string().trim().min(20).max(10000),
+ team_members:z.string().max(5000).optional().default(""), start_date:z.union([z.literal(""),z.string().date()]).optional().default(""),
+ end_date:z.union([z.literal(""),z.string().date()]).optional().default(""), summary:z.string().trim().min(20).max(10000),
  resources:z.string().max(10000).optional().default(""), safety_notes:z.string().max(5000).optional().default(""),
- acknowledgement:z.string().optional()
+ acknowledgement:z.literal("on")
 });
 export async function POST(req:NextRequest){
  const ip=req.headers.get("x-forwarded-for")?.split(",")[0]?.trim()||"unknown";

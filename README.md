@@ -18,7 +18,7 @@ A full-stack Next.js + Supabase implementation scaffold for project registration
 ## Quick start
 1. Install Node.js 20+ and create a Supabase project.
 2. Copy `.env.example` to `.env.local` and fill in the Supabase project URL, anon key, and service role key.
-3. In Supabase SQL Editor, run `supabase/migrations/0001_initial_schema.sql`.
+3. In Supabase SQL Editor, run the migrations in `supabase/migrations` in order.
 4. Run `npm install`.
 5. Run `npm run dev`.
 6. Create the first staff user in Supabase Auth, then promote that user's profile to `staff` using the SQL in `docs/ADMIN_SETUP.md`.

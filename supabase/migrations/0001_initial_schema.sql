@@ -138,7 +138,6 @@ alter table public.stock_movements enable row level security;
 alter table public.audit_events enable row level security;
 
 create policy "Users can read own profile" on public.profiles for select to authenticated using(id=auth.uid() or public.is_staff());
-create policy "Staff can update profiles" on public.profiles for update to authenticated using(public.is_staff()) with check(public.is_staff());
 create policy "Project owner or staff can read projects" on public.projects for select to authenticated using(submitted_by=auth.uid() or exists(select 1 from public.project_members pm where pm.project_id=id and pm.user_id=auth.uid()) or public.is_staff());
 create policy "Staff can update projects" on public.projects for update to authenticated using(public.is_staff()) with check(public.is_staff());
 create policy "Staff can read project members" on public.project_members for select to authenticated using(user_id=auth.uid() or public.is_staff());

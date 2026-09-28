@@ -1,3 +1,4 @@
+import "server-only";
 import { createClient as createSupabaseClient } from "@supabase/supabase-js";
 // Server-only: never import this module into a Client Component.
 export function createAdminClient() {
